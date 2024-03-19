@@ -12,4 +12,4 @@ const obj2 = {
     __proto__: obj
 }
 
-console.log(obj2.show())
+console.log(obj2)
