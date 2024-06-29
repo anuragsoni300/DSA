@@ -31,6 +31,7 @@ public:
                 cout << nums[k] << " ";
             }
         }
+        cout << endl;
     }
 };
 
