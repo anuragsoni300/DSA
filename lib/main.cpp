@@ -6,28 +6,41 @@ using namespace std;
 class Solution
 {
 public:
-    int lengthOfLongestSubstring(string s)
+    string ans;
+    int longestPalindrome(string s)
     {
-        unordered_map<char, int> m;
-        vector<int> v(256, -1);
-        int left = 0, maxC = 0;
-        for (int right = 0; right < s.size(); right++)
+        int maxC = 0;
+        for (int i = 0; i < s.size(); i++)
         {
-            // if(m.count(s[right]) == 0 || m[s[right]] < left) maxC = max(maxC, right - left + 1);
-            // else left = m[s[right]]+1;
-            // m[s[right]] = right;
-            if (v[s[right]] >= left)
-                left = v[s[right]] + 1;
-            v[s[right]] = right;
-            maxC = max(maxC, right - left + 1);
+            pallindrome(i, i, &maxC, &s);     // Odd
+            pallindrome(i, i + 1, &maxC, &s); // Even
         }
         return maxC;
+    }
+
+    void pallindrome(int left, int right, int *maxC, string *s)
+    {
+        while (left >= 0 && right < (*s).size())
+        {
+            if ((*s)[left] == (*s)[right])
+            {
+                if (*maxC < right - left + 1)
+                {
+                    ans = (*s).substr(left, right + 1);
+                    *maxC = right - left + 1;
+                }
+            }
+            else
+                break;
+            left--;
+            right++;
+        }
     }
 };
 
 int main()
 {
     Solution s = Solution();
-    cout << s.lengthOfLongestSubstring("anurag") << endl;
+    cout << s.longestPalindrome("aaaa") << "::" << s.ans << endl;
     return 0;
 }
