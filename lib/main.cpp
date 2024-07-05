@@ -12,21 +12,20 @@ public:
         int maxC = 0;
         for (int i = 0; i < s.size(); i++)
         {
-            pallindrome(i, i, &maxC, &s);     // Odd
-            pallindrome(i, i + 1, &maxC, &s); // Even
+            pallindrome(i, i, &maxC, s);     // Odd
+            pallindrome(i, i + 1, &maxC, s); // Even
         }
         return maxC;
     }
 
-    void pallindrome(int left, int right, int *maxC, string *s)
+    void pallindrome(int left, int right, int *maxC, string s)
     {
-        while (left >= 0 && right < (*s).size() && (*s)[left] == (*s)[right])
+        while (left >= 0 && right < s.size() && s[left] == s[right])
         {
             if (*maxC < right - left + 1)
             {
-                ans = (*s).substr(left, right + 1);
                 *maxC = right - left + 1;
-                // cout << left << "::" << right << endl;
+                ans = s.substr(left, *maxC);
             }
             left--;
             right++;
