@@ -20,18 +20,14 @@ public:
 
     void pallindrome(int left, int right, int *maxC, string *s)
     {
-        while (left >= 0 && right < (*s).size())
+        while (left >= 0 && right < (*s).size() && (*s)[left] == (*s)[right])
         {
-            if ((*s)[left] == (*s)[right])
+            if (*maxC < right - left + 1)
             {
-                if (*maxC < right - left + 1)
-                {
-                    ans = (*s).substr(left, right + 1);
-                    *maxC = right - left + 1;
-                }
+                ans = (*s).substr(left, right + 1);
+                *maxC = right - left + 1;
+                // cout << left << "::" << right << endl;
             }
-            else
-                break;
             left--;
             right++;
         }
@@ -41,6 +37,6 @@ public:
 int main()
 {
     Solution s = Solution();
-    cout << s.longestPalindrome("aaaa") << "::" << s.ans << endl;
+    cout << s.longestPalindrome("cbbd") << "::" << s.ans << endl;
     return 0;
 }
