@@ -2,7 +2,7 @@
 #include "utils/common.h"
 using namespace std;
 
-#define ll long long;
+using ll = long long;
 
 class Solution
 {
