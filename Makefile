@@ -2,7 +2,7 @@ CFLAGS = -o ./bin/a.out
 
 all: build run
 
-build: lib/main.cpp
+build:
 	@g++ lib/utils/* lib/main.cpp $(CFLAGS)
 
 run:
